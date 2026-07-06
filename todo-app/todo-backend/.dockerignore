@@ -2,3 +2,4 @@ node_modules
 .gitignore
 .dockerignore
 Dockerfile
+redis_data
