@@ -10,6 +10,6 @@ export default defineConfig({
     setupFiles: './testSetup.js',
   },
   server: {
-    allowedHosts: ['frontend-dev', 'localhost'],
+    allowedHosts: ['frontend', 'localhost'],
   }
 })

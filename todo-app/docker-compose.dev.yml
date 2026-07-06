@@ -15,26 +15,26 @@ services:
     volumes:
       - ./redis_data:/data
   
-  backend-dev:
-    image: backend-dev
+  backend:
+    image: backend
     build:
       context: ./todo-backend
       dockerfile: dev.Dockerfile
     volumes:
       - ./todo-backend:/usr/src/app/
-    container_name: backend-dev
+    container_name: backend
     environment:
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
       - REDIS_URL=redis://redis:6379
 
-  frontend-dev:
-    image: frontend-dev
+  frontend:
+    image: frontend
     build:
       context: ./todo-frontend
       dockerfile: dev.Dockerfile
     volumes:
       - ./todo-frontend:/usr/src/app
-    container_name: frontend-dev
+    container_name: frontend
 
   nginx:
     image: nginx:1.29
@@ -44,8 +44,8 @@ services:
       - 8080:80
     container_name: reverse-proxy
     depends_on:
-      - backend-dev
-      - frontend-dev
+      - backend
+      - frontend
 
 volumes:
   mongo_data:
