@@ -9,12 +9,6 @@ router.get('/', async (_, res) => {
   res.send(todos);
 });
 
-/* GET statistics. */
-router.get('/statistics', async (_, res) => {
-  const added_todos = await get('added_todos') || 0
-  res.send({ added_todos: Number(added_todos) })
-});
-
 /* POST todo to listing. */
 router.post('/', async (req, res) => {
   const todo = await Todo.create({
