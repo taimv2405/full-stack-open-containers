@@ -25,12 +25,12 @@ services:
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
       - REDIS_URL=redis://redis:6379
 
-  frontend:
+  app:
     image: todo-front
     build:
       context: ./todo-frontend
       dockerfile: Dockerfile
-    container_name: frontend
+    container_name: app
 
   nginx:
     image: nginx:1.29
@@ -41,7 +41,7 @@ services:
     container_name: reverse-proxy
     depends_on:
       - backend
-      - frontend
+      - app
 
 volumes:
   mongo_data:
